@@ -1,4 +1,4 @@
-package com.spartaglobal;
+package com.spartaglobal.day2;
 
 public class PasswordPolicy {
     private int maxChars;
