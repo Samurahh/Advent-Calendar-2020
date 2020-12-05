@@ -8,19 +8,19 @@ import java.util.Scanner;
 
 public class PassportValidation {
 
-    public static List<Passport> getPassports(){
-        try{
+    public static List<Passport> getPassports() {
+        try {
             List<Passport> passportsList = new ArrayList<>();
             File file = new File("passportsFile.txt");
             Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()){
+            while (scanner.hasNextLine()) {
                 String currentLine = scanner.nextLine();
                 Passport passport = new Passport();
-                while(!(currentLine.isBlank() || currentLine.isEmpty()) && scanner.hasNextLine()){
+                while (!(currentLine.isBlank() || currentLine.isEmpty()) && scanner.hasNextLine()) {
                     passport.addInfo(currentLine);
                     currentLine = scanner.nextLine();
                 }
-                if(!(currentLine.isBlank() || currentLine.isEmpty()) && !scanner.hasNextLine()){
+                if (!(currentLine.isBlank() || currentLine.isEmpty()) && !scanner.hasNextLine()) {
                     passport.addInfo(currentLine);
                 }
                 passportsList.add(passport);
@@ -33,23 +33,23 @@ public class PassportValidation {
         return null;
     }
 
-    public static int countValidPassports(String... exceptions){
+    public static int countValidPassports(String... exceptions) {
         int counter = 0;
         List<Passport> passportList = getPassports();
         assert passportList != null;
-        for (Passport passport: passportList) {
+        for (Passport passport : passportList) {
             printPassport(passport);
             boolean isValid = passport.isValid(exceptions);
-            if(isValid){
+            if (isValid) {
                 counter++;
             }
-            System.out.println("THIS PASSPORT IS: " + (isValid?"VALID":"NOT VALID"));
+            System.out.println("THIS PASSPORT IS: " + (isValid ? "VALID" : "NOT VALID"));
             System.out.println();
         }
         return counter;
     }
 
-    public static void printPassport(Passport passport){
+    public static void printPassport(Passport passport) {
         System.out.printf("Birth year:  %s%n", passport.getCredentials().get("byr"));
         System.out.printf("Issue year:  %s%n", passport.getCredentials().get("iyr"));
         System.out.printf("Expir year:  %s%n", passport.getCredentials().get("eyr"));

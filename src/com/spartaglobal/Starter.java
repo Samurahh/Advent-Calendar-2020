@@ -1,9 +1,9 @@
 package com.spartaglobal;
 
-import com.spartaglobal.day4.PassportValidation;
+import com.spartaglobal.day5.BoardingPassProblem;
 
 public class Starter {
-    public static void start(){
+    public static void start() {
 //        System.out.println(MultiplyingProblem.multiplyFirstTwoThatSums(2020, AdventProblem.getData()));
 //        System.out.println(MultiplyingProblem.multiplyFirstThreeThatSums(2020, AdventProblem.getData()));
 
@@ -18,6 +18,10 @@ public class Starter {
 //        int slope5 = SlopeProblem.countTreesOnSlope(0,2,1,SlopeProblem.getMap());
 //        long result = (long) slope1 *slope2*slope3*slope4*slope5;
 //        System.out.println(result);
-        System.out.println(PassportValidation.countValidPassports("cid"));
+
+//        System.out.println(PassportValidation.countValidPassports("cid"));
+
+        System.out.println(BoardingPassProblem.getMaxId(BoardingPassProblem.getBoardingPasses()));
+        System.out.println(BoardingPassProblem.getEmptySeats(BoardingPassProblem.getBoardingPasses()));
     }
 }

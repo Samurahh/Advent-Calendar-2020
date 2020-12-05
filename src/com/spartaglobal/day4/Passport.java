@@ -3,9 +3,10 @@ package com.spartaglobal.day4;
 import java.util.*;
 
 public class Passport {
-    private HashMap<String,String> credentials = new HashMap<>();
+    private HashMap<String, String> credentials = new HashMap<>();
     private static final ArrayList<String> requiredCredentials = new ArrayList<>();
-//    private String byr; //Birth Year
+
+    //    private String byr; //Birth Year
 //    private String iyr; //Issue Year
 //    private String eyr; //Expiration Year
 //    private String hgt; //Height
@@ -13,26 +14,26 @@ public class Passport {
 //    private String ecl; //Eye Color
 //    private String pid; //Passport ID
 //    private String cid; //Country ID
-    static{
+    static {
         requiredCredentials.addAll(Arrays.asList("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"));
-}
+    }
 
-    public void addInfo(String info){
+    public void addInfo(String info) {
         LinkedList<String> infoParts = new LinkedList<>(Arrays.asList(info.split("[: ]")));
-        while(infoParts.size()>0){
-            if(!credentials.containsKey(infoParts.peek()) && requiredCredentials.contains(infoParts.peek())){
+        while (infoParts.size() > 0) {
+            if (!credentials.containsKey(infoParts.peek()) && requiredCredentials.contains(infoParts.peek())) {
                 String credential = infoParts.poll();
                 String value = infoParts.poll();
-                credentials.put(credential,value);
-            }else{
+                credentials.put(credential, value);
+            } else {
                 infoParts.remove();
             }
         }
     }
 
-    public boolean isValid(String... except){
+    public boolean isValid(String... except) {
         for (String requiredCredential : requiredCredentials) {
-            if(!Arrays.asList(except).contains(requiredCredential)) {
+            if (!Arrays.asList(except).contains(requiredCredential)) {
                 if (!credentials.containsKey(requiredCredential) || !isValidCredential(requiredCredential)) {
                     return false;
                 }
@@ -41,11 +42,11 @@ public class Passport {
         return true;
     }
 
-    private boolean isValidCredential(String credential){
-        switch (credential){
+    private boolean isValidCredential(String credential) {
+        switch (credential) {
             case "byr": {
                 boolean matchPatter = credentials.get(credential).matches("\\d{4}");
-                if(matchPatter){
+                if (matchPatter) {
                     int value = Integer.parseInt(credentials.get(credential));
                     return value >= 1920 && value <= 2002;
                 }
@@ -53,15 +54,15 @@ public class Passport {
             }
             case "iyr": {
                 boolean matchPatter = credentials.get(credential).matches("\\d{4}");
-                if(matchPatter){
+                if (matchPatter) {
                     int value = Integer.parseInt(credentials.get(credential));
                     return value >= 2010 && value <= 2020;
                 }
                 return false;
             }
-            case "eyr":{
+            case "eyr": {
                 boolean matchPatter = credentials.get(credential).matches("\\d{4}");
-                if(matchPatter){
+                if (matchPatter) {
                     int value = Integer.parseInt(credentials.get(credential));
                     return value >= 2020 && value <= 2030;
                 }
@@ -69,11 +70,11 @@ public class Passport {
             }
             case "hgt": {
                 boolean matchPatter = credentials.get(credential).matches("\\d*(cm|in)");
-                if(matchPatter){
+                if (matchPatter) {
                     String stringValue = credentials.get(credential);
                     int integerValue = Integer.parseInt(stringValue.replaceAll("[a-zA-z]*", ""));
                     stringValue = stringValue.replaceAll("\\d*", "");
-                    switch (stringValue){
+                    switch (stringValue) {
                         case "in": {
                             return integerValue >= 59 && integerValue <= 76;
                         }
@@ -96,7 +97,8 @@ public class Passport {
             case "cid": {
                 return credentials.get(credential).matches("");
             }
-            default: return true;
+            default:
+                return true;
         }
     }
 
