@@ -1,6 +1,7 @@
 package com.spartaglobal;
 
 import com.spartaglobal.day5.BoardingPassProblem;
+import com.spartaglobal.day6.CustomsDeclarationProblem;
 
 public class Starter {
     public static void start() {
@@ -20,8 +21,12 @@ public class Starter {
 //        System.out.println(result);
 
 //        System.out.println(PassportValidation.countValidPassports("cid"));
+//
+//        System.out.println(BoardingPassProblem.getMaxId(BoardingPassProblem.getBoardingPasses()));
+//        System.out.println(BoardingPassProblem.getEmptySeats(BoardingPassProblem.getBoardingPasses()));
 
-        System.out.println(BoardingPassProblem.getMaxId(BoardingPassProblem.getBoardingPasses()));
-        System.out.println(BoardingPassProblem.getEmptySeats(BoardingPassProblem.getBoardingPasses()));
+        System.out.println(CustomsDeclarationProblem.getTotalPositiveAnswers(CustomsDeclarationProblem.getGroups()));
+        System.out.println(CustomsDeclarationProblem.getTotalPositiveAnswers(CustomsDeclarationProblem.getGroups()));
+        System.out.println(CustomsDeclarationProblem.getTotalCompletePositiveAnswers(CustomsDeclarationProblem.getGroups()));
     }
 }
