@@ -26,7 +26,6 @@ public class Starter {
 //        System.out.println(BoardingPassProblem.getEmptySeats(BoardingPassProblem.getBoardingPasses()));
 
         System.out.println(CustomsDeclarationProblem.getTotalPositiveAnswers(CustomsDeclarationProblem.getGroups()));
-        System.out.println(CustomsDeclarationProblem.getTotalPositiveAnswers(CustomsDeclarationProblem.getGroups()));
         System.out.println(CustomsDeclarationProblem.getTotalCompletePositiveAnswers(CustomsDeclarationProblem.getGroups()));
     }
 }

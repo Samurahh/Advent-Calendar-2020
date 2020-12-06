@@ -30,10 +30,10 @@ public class CustomsDeclarationProblem {
         return null;
     }
 
-    public static int getTotalPositiveAnswers(List<Group> groups){
-        if (groups == null){
+    public static int getTotalPositiveAnswers(List<Group> groups) {
+        if (groups == null) {
             return -1;
-        }else {
+        } else {
             int total = 0;
             for (Group group : groups) {
                 total += group.getPositiveAnswers();
@@ -42,10 +42,10 @@ public class CustomsDeclarationProblem {
         }
     }
 
-    public static int getTotalCompletePositiveAnswers(List<Group> groups){
-        if (groups == null){
+    public static int getTotalCompletePositiveAnswers(List<Group> groups) {
+        if (groups == null) {
             return -1;
-        }else {
+        } else {
             int total = 0;
             for (Group group : groups) {
                 total += group.getCompletPositiveAnswers();
@@ -55,13 +55,10 @@ public class CustomsDeclarationProblem {
     }
 
     private static class Group {
-        private List<String> answers = new ArrayList<>();
+        private final List<String> answers = new ArrayList<>();
 
-        public Group(List<String> answers) {
-            this.answers = answers;
+        public Group() {
         }
-
-        public Group(){}
 
         public int getPositiveAnswers() {
             int count = 0;
@@ -78,7 +75,7 @@ public class CustomsDeclarationProblem {
             return count;
         }
 
-        public int getCompletPositiveAnswers(){
+        public int getCompletPositiveAnswers() {
             int count = 0;
             Map<Character, Integer> positiveAnswers = new HashMap<>();
             for (String answer : answers) {
@@ -86,29 +83,22 @@ public class CustomsDeclarationProblem {
                 for (char c : answerChar) {
                     if (!positiveAnswers.containsKey(c)) {
                         positiveAnswers.put(c, 1);
-                    }else{
-                        positiveAnswers.put(c,positiveAnswers.get(c)+1);
+                    } else {
+                        positiveAnswers.put(c, positiveAnswers.get(c) + 1);
                     }
                 }
             }
-            for (int positiveAnswer: positiveAnswers.values()) {
-                if(positiveAnswer == answers.size()){
+            for (int positiveAnswer : positiveAnswers.values()) {
+                if (positiveAnswer == answers.size()) {
                     count++;
                 }
             }
             return count;
         }
 
-        public void addAnswer(String answer){
+        public void addAnswer(String answer) {
             answers.add(answer);
         }
 
-        public List<String> getAnswers() {
-            return answers;
-        }
-
-        public void setAnswers(List<String> answers) {
-            this.answers = answers;
-        }
     }
 }
